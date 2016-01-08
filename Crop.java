@@ -7,13 +7,13 @@ public abstract class Crop{
 	waterLevel = 0;
     }
 
-    public void water{
+    public void water(){
 	waterLevel = 100;
     }
 
-    public void loseHealth{
+    public void loseHealth(){
 	health-=1;
     }
 
-    public abstract void grow{}
+    public abstract void grow(){}
 }
