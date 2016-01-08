@@ -2,9 +2,9 @@ public abstract class Crop{
     int health,waterLevel,height;
     String type;
 
-    public Crop(type){
-	this.type = type;
+    public Crop(){
 	waterLevel = 0;
+	height = 0;
     }
 
     public void water(){
@@ -12,7 +12,11 @@ public abstract class Crop{
     }
 
     public void loseHealth(){
-	health-=1;
+	health -= 1;
+    }
+
+    public void addHeight(int amount){
+	height += amount;
     }
 
     public abstract void grow(){}
