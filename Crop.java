@@ -19,5 +19,5 @@ public abstract class Crop{
 	height += amount;
     }
 
-    public abstract void grow(){}
+    public abstract void grow();
 }
