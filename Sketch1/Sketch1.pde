@@ -41,7 +41,7 @@ void draw(){
     text("Start", rectX, rectY+30);
 }
 void update(int x, int y){
-  if (mouseX >= rectX && mouseX <= rectX+rectSize && 
+  if (mouseX >= rectX && mouseX <= rectX+rectSize+20 && 
       mouseY >= rectY && mouseY <= rectY+rectSize){
     rectOver = true;
   } else {
