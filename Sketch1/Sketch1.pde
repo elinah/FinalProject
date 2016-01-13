@@ -25,6 +25,7 @@ void setup() {
   rectColor = color(255);
   rectHighlight = color(204);
 }
+
 void draw(){
     shape(wateringCan);
     shape(weedRemover);
@@ -40,6 +41,7 @@ void draw(){
     fill(0);
     text("Start", rectX, rectY+30);
 }
+
 void update(int x, int y){
   if (mouseX >= rectX && mouseX <= rectX+rectSize+20 && 
       mouseY >= rectY && mouseY <= rectY+rectSize){
@@ -48,8 +50,25 @@ void update(int x, int y){
     rectOver = false;
   }
 }
+
 void mousePressed(){
   if (rectOver){
-    
+    fill(255);
+    rect(0,0,140,600);
+    line(0,120,140,120);
+    line(0,240,140,240);
+    line(0,360,140,360);
+    line(0,480,140,480);
+    textSize(20);
+    fill(0);
+    text("Corn",10,30);
+    text("Lettuce",10,150);
+    text("Potato",10,270);
+    text("Tomato",10,390);
+    text("Wheat",10,510);
+    fill(255);
+    noStroke();
+    rect(145, 450, rectSize+30, rectSize+10);
+    noLoop();
   }
 }
