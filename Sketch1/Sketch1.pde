@@ -6,8 +6,6 @@ int rectSize = 50;
 color rectColor;
 color rectHighlight;
 boolean rectOver = false;
-String[] args = {"TwoFrameTest"};
-SecondApplet sa = new SecondApplet();
 
 void setup() {
   size(600,600);
@@ -52,6 +50,6 @@ void update(int x, int y){
 }
 void mousePressed(){
   if (rectOver){
-    PApplet.runSketch(args,sa);
+    
   }
 }
