@@ -6,8 +6,9 @@ int rectSize = 50;
 color rectColor;
 color rectHighlight;
 boolean rectOver = false;
+Tomato t = new Tomato();
 
-void setup() {
+void setup(){
   size(600,600);
   background(255);
   fill(128,89,50);
@@ -29,7 +30,7 @@ void setup() {
 void draw(){
     shape(wateringCan);
     shape(weedRemover);
-    update(mouseX, mouseY);
+    update();
       if (rectOver){    
         fill(rectHighlight);
       } else {
@@ -40,9 +41,10 @@ void draw(){
     textSize(30);
     fill(0);
     text("Start", rectX, rectY+30);
+    t.display();
 }
 
-void update(int x, int y){
+void update(){
   if (mouseX >= rectX && mouseX <= rectX+rectSize+20 && 
       mouseY >= rectY && mouseY <= rectY+rectSize){
     rectOver = true;
