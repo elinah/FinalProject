@@ -5,9 +5,8 @@ int rectX, rectY;
 int rectSize = 50;
 color rectColor;
 color rectHighlight;
-Tomato t = new Tomato();
-//0 = start, 1 = corn, 2 = lettuce, 3 = potato, 4 = tomato, 5 = wheat
 boolean[] over = new boolean[6];
+Crop[] field = new Crop[4];
 
 void setup(){
   size(600,600);
@@ -26,22 +25,35 @@ void setup(){
   rectY = 450;
   rectColor = color(255);
   rectHighlight = color(204);
+  shape(wateringCan);
+  shape(weedRemover);
+  stroke(0);
+  fill(255);
+  rect(rectX, rectY, rectSize+20, rectSize);
+  textSize(30);
+  fill(0);
+  text("Start", rectX, rectY+30);
 }
 
 void draw(){
-    shape(wateringCan);
-    shape(weedRemover);
     update(0, rectX, rectX+rectSize+20, rectY, rectY+rectSize);
-      if (over[0]){    
-        fill(rectHighlight);
-      } else {
-        fill(rectColor);
-      }
-    stroke(0);
-    rect(rectX, rectY, rectSize+20, rectSize);
-    textSize(30);
-    fill(0);
-    text("Start", rectX, rectY+30);
+    if (over[0]){
+      fill(rectHighlight);
+    } else {
+      fill(rectColor);
+    }
+    update(4, 0, 140, 361, 479);
+    if (over[4]){    
+    fill(rectHighlight);
+  } else {
+    fill(rectColor);
+  }
+  update(5, 0, 140, 481, 599);
+    if (over[5]){    
+    fill(rectHighlight);
+  } else {
+    fill(rectColor);
+  }
 }
 
 void update(int index, int x1, int x2, int y1, int y2){
@@ -52,15 +64,6 @@ void update(int index, int x1, int x2, int y1, int y2){
     over[index] = false;
   }
 }
-
-/*void moreDraw(){
-  update(4, 0, 140, 361, 479);
-  if (over[4]){    
-    fill(rectHighlight);
-  } else {
-    fill(rectColor);
-  }
-}*/
 
 void mousePressed(){
   if (over[0]){
@@ -80,9 +83,26 @@ void mousePressed(){
     fill(255);
     noStroke();
     rect(145, 450, rectSize+30, rectSize+10);
-    noLoop();
+  }  
+//0 = start, 1 = corn, 2 = lettuce, 3 = potato, 4 = tomato, 5 = wheat
+  if (over[1]){
+    field[0]=new Lettuce();
+    field[0].display();
+  }
+  if (over[2]){
+    field[0]=new Lettuce();
+    field[0].display();
+  }
+  if (over[3]){
+    field[0]=new Potato();
+    field[0].display();
   }
   if (over[4]){
-    t.display();
+    field[0]=new Tomato();
+    field[0].display();
+  }
+  if (over[5]){
+    field[1]=new Wheat();
+    field[1].display();
   }
 }

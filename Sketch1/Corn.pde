@@ -8,4 +8,9 @@ class Corn extends Crop{
   void grow(){
     addHeight(3);
   }
+  
+  void display(){
+    fill(25);
+    rect(50,50,50,50);
+  }
 }

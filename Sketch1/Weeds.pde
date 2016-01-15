@@ -12,4 +12,9 @@ public class Weeds{
   void killCrop(Crop c){
     c.loseHealth();
   }
+  
+  void display(){
+    fill(150);
+    rect(50,50,50,50);
+  }
 }

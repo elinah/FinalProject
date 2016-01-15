@@ -1,23 +1,24 @@
 abstract class Crop{
   int health,waterLevel,height;
   String type;
-  
-Crop(){
-  waterLevel = 0;
-  height = 0;
-    }
 
-void water(){
-  waterLevel = 100;
-    }
+  Crop(){
+    waterLevel = 0;
+    height = 0;
+  }
 
-void loseHealth(){
-  health -= 1;
-    }
+  void water(){
+    waterLevel = 100;
+  }
 
-void addHeight(int amount){
-  height += amount;
-    }
+  void loseHealth(){
+    health -= 1;
+  }
 
-abstract void grow();
+  void addHeight(int amount){
+    height += amount;
+  }
+
+  abstract void grow();
+  abstract void display();
 }
