@@ -5,8 +5,9 @@ int rectX, rectY;
 int rectSize = 50;
 color rectColor;
 color rectHighlight;
-boolean rectOver = false;
 Tomato t = new Tomato();
+//0 = start, 1 = corn, 2 = lettuce, 3 = potato, 4 = tomato, 5 = wheat
+boolean[] over = new boolean[6];
 
 void setup(){
   size(600,600);
@@ -30,8 +31,8 @@ void setup(){
 void draw(){
     shape(wateringCan);
     shape(weedRemover);
-    update();
-      if (rectOver){    
+    update(0, rectX, rectX+rectSize+20, rectY, rectY+rectSize);
+      if (over[0]){    
         fill(rectHighlight);
       } else {
         fill(rectColor);
@@ -41,20 +42,28 @@ void draw(){
     textSize(30);
     fill(0);
     text("Start", rectX, rectY+30);
-    t.display();
 }
 
-void update(){
-  if (mouseX >= rectX && mouseX <= rectX+rectSize+20 && 
-      mouseY >= rectY && mouseY <= rectY+rectSize){
-    rectOver = true;
+void update(int index, int x1, int x2, int y1, int y2){
+  if (mouseX >= x1 && mouseX <= x2 && 
+      mouseY >= y1 && mouseY <= y2){
+    over[index] = true;
   } else {
-    rectOver = false;
+    over[index] = false;
   }
 }
 
+/*void moreDraw(){
+  update(4, 0, 140, 361, 479);
+  if (over[4]){    
+    fill(rectHighlight);
+  } else {
+    fill(rectColor);
+  }
+}*/
+
 void mousePressed(){
-  if (rectOver){
+  if (over[0]){
     fill(255);
     rect(0,0,140,600);
     line(0,120,140,120);
@@ -72,5 +81,8 @@ void mousePressed(){
     noStroke();
     rect(145, 450, rectSize+30, rectSize+10);
     noLoop();
+  }
+  if (over[4]){
+    t.display();
   }
 }
