@@ -36,13 +36,13 @@ void setup(){
 }
 
 void draw(){
-    update(0, rectX, rectX+rectSize+20, rectY, rectY+rectSize);
+  update(0, rectX, rectX+rectSize+20, rectY, rectY+rectSize);
     if (over[0]){
       fill(rectHighlight);
     } else {
       fill(rectColor);
     }
-    update(4, 0, 140, 361, 479);
+  update(4, 0, 140, 361, 479);
     if (over[4]){    
     fill(rectHighlight);
   } else {
