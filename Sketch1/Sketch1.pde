@@ -157,7 +157,7 @@ void mousePressed(){
     rect(145, 450, 80, 60);
   }  
   if (over[1]){
-    field[0]=new Lettuce();
+    field[0]=new Corn();
     field[0].display();
   }
   if (over[2]){
