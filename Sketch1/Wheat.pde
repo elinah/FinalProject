@@ -6,7 +6,9 @@ class Wheat extends Crop{
   }
 
   void grow(){
+    if (waterLevel > 25 && height < 105){
     addHeight(4);
+    }
   }
   
   void display(){

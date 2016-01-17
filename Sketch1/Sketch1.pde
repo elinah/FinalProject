@@ -6,7 +6,7 @@ color rectHighlight;
 //0 = start, 1 = corn, 2 = lettuce, 3 = potato, 4 = tomato, 5 = wheat
 boolean[] over = new boolean[6];
 boolean[] wasOver = {true, true, true, true, true, true};
-Crop[] field = new Crop[4];
+Crop[] field = new Crop[5];
 boolean startExists = true;
 
 void setup(){
@@ -29,6 +29,13 @@ void setup(){
 }
 
 void draw(){
+  for(int i = 0;i < 4;i++){
+    if (field[i] != null && frameCount % 100 == 0){
+      field[i].loseWater();
+      field[i].grow();
+      System.out.println(field[i]);
+    }
+  }
   update(0, 145, 215, 450, 500);
   if (!wasOver[0] && over[0] && startExists){
     stroke(0);
@@ -148,6 +155,16 @@ void update(int index, int x1, int x2, int y1, int y2){
   }
 }
 
+int openSpace(){
+  for(int i = 0;i < 4;i++){
+    if(field[i] == null){
+      return i;
+    }
+  }
+  return 4;
+}
+
+
 void mousePressed(){
 //0 = start, 1 = corn, 2 = lettuce, 3 = potato, 4 = tomato, 5 = wheat
   if (over[0] && startExists){
@@ -157,23 +174,38 @@ void mousePressed(){
     rect(145, 450, 80, 60);
   }  
   if (over[1]){
-    field[0]=new Corn();
-    field[0].display();
+    int place = openSpace();
+    field[place]=new Corn();
+    if(place < 4){
+      field[place].display();
+    }
   }
   if (over[2]){
-    field[0]=new Lettuce();
-    field[0].display();
+    int place = openSpace();
+    field[place]=new Lettuce();
+    if(place < 4){
+      field[place].display();
+    }
   }
   if (over[3]){
-    field[0]=new Potato();
-    field[0].display();
+    int place = openSpace();
+    field[place]=new Potato();
+    if(place < 4){
+      field[place].display();
+    }
   }
   if (over[4]){
-    field[0]=new Tomato();
-    field[0].display();
+    int place = openSpace();
+    field[place]=new Tomato();
+    if(place < 4){
+      field[place].display();
+    }
   }
   if (over[5]){
-    field[1]=new Wheat();
-    field[1].display();
+    int place = openSpace();
+    field[place]=new Wheat();
+    if(place < 4){
+      field[place].display();
+    }
   }
 }

@@ -6,7 +6,9 @@ class Corn extends Crop{
   }
 
   void grow(){
-    addHeight(3);
+    if (waterLevel > 25 && height < 105){
+      addHeight(3);
+    }
   }
   
   void display(){

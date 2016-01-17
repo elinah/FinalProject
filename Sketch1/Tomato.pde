@@ -6,7 +6,9 @@ class Tomato extends Crop{
   }
 
   void grow(){
-    addHeight(5);
+    if (waterLevel > 25 && height < 105){
+      addHeight(5);
+    }
   }
   
   void display(){

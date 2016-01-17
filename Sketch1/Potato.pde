@@ -6,7 +6,9 @@ class Potato extends Crop{
   }
 
   void grow(){
+    if (waterLevel > 25 && height < 105){
     addHeight(5);
+    }
   }
   
   void display(){
