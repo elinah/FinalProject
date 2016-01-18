@@ -158,7 +158,7 @@ void update(int index, int x1, int x2, int y1, int y2){
 }
 
 int[] freeField(){
-  int[]clear = {0,0};
+  int[] clear = {-1,-1};
   for(int i = 0;i < 4;i++){
     if(free[i]){
       free[i] = false;
@@ -177,36 +177,41 @@ void mousePressed(){
     rect(145, 450, 80, 60);
   }  
   if (over[1]){
-    if(field.size() < 5){
-      Corn c = new Corn(freeField()[0],freeField()[1]);
+    if(field.size() < 4){
+      int[] f = freeField();
+      Corn c = new Corn(f[0],f[1]);
       field.add(c);
       c.display();
     }
   }
   else if (over[2]){
-    if(field.size() < 5){
-      Lettuce l = new Lettuce(freeField()[0],freeField()[1]);
+    if(field.size() < 4){
+      int[] f = freeField();
+      Lettuce l = new Lettuce(f[0],f[1]);
       field.add(l);
       l.display();
     }
   }
   else if (over[3]){
-    if(field.size() < 5){
-      Potato p = new Potato(freeField()[0],freeField()[1]);
+    if(field.size() < 4){
+      int[] f = freeField();
+      Potato p = new Potato(f[0],f[1]);
       field.add(p);
       p.display();
     }
   }
   else if (over[4]){
-    if(field.size() < 5){
-      Tomato t = new Tomato(freeField()[0],freeField()[1]);
+    if(field.size() < 4){
+      int[] f = freeField();
+      Tomato t = new Tomato(f[0],f[1]);
       field.add(t);
       t.display();
     }
   }
   else if (over[5]){
-    if(field.size() < 5){
-      Wheat w = new Wheat(freeField()[0],freeField()[1]);
+    if(field.size() < 4){
+      int[] f = freeField();
+      Wheat w = new Wheat(f[0],f[1]);
       field.add(w);
       w.display();
     }

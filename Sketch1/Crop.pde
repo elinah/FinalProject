@@ -18,7 +18,7 @@ abstract class Crop{
   }
   
   String toString(){
-    return type + " Height: " + height + " Water:" + waterLevel;
+    return type + " Height: " + height + " Water:" + waterLevel + " (" + xcor + "," + ycor + ")";
   }
 
   void loseHealth(){
