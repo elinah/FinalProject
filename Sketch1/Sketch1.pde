@@ -6,7 +6,7 @@ color rectHighlight;
 //0 = start, 1 = corn, 2 = lettuce, 3 = potato, 4 = tomato, 5 = wheat
 boolean[] over = new boolean[6];
 boolean[] wasOver = {true, true, true, true, true, true};
-Crop[] field = new Crop[5];
+ArrayList<Crop> field = new ArrayList<Crop>();
 boolean startExists = true;
 
 void setup(){
@@ -29,11 +29,11 @@ void setup(){
 }
 
 void draw(){
-  for(int i = 0;i < 4;i++){
-    if (field[i] != null && frameCount % 100 == 0){
-      field[i].loseWater();
-      field[i].grow();
-      System.out.println(field[i]);
+  for(int i = 0;i < field.size();i++){
+    if (frameCount % 100 == 0){
+      field.get(i).loseWater();
+      field.get(i).grow();
+      System.out.println(field.get(i));
     }
   }
   update(0, 145, 215, 450, 500);
@@ -155,16 +155,6 @@ void update(int index, int x1, int x2, int y1, int y2){
   }
 }
 
-int openSpace(){
-  for(int i = 0;i < 4;i++){
-    if(field[i] == null){
-      return i;
-    }
-  }
-  return 4;
-}
-
-
 void mousePressed(){
 //0 = start, 1 = corn, 2 = lettuce, 3 = potato, 4 = tomato, 5 = wheat
   if (over[0] && startExists){
@@ -174,38 +164,38 @@ void mousePressed(){
     rect(145, 450, 80, 60);
   }  
   if (over[1]){
-    int place = openSpace();
-    field[place]=new Corn();
-    if(place < 4){
-      field[place].display();
+    if(field.size() < 5){
+      Corn c = new Corn();
+      field.add(c);
+      c.display();
     }
   }
-  if (over[2]){
-    int place = openSpace();
-    field[place]=new Lettuce();
-    if(place < 4){
-      field[place].display();
+  else if (over[2]){
+    if(field.size() < 5){
+      Lettuce l = new Lettuce();
+      field.add(l);
+      l.display();
     }
   }
-  if (over[3]){
-    int place = openSpace();
-    field[place]=new Potato();
-    if(place < 4){
-      field[place].display();
+  else if (over[3]){
+    if(field.size() < 5){
+      Potato p = new Potato();
+      field.add(p);
+      p.display();
     }
   }
-  if (over[4]){
-    int place = openSpace();
-    field[place]=new Tomato();
-    if(place < 4){
-      field[place].display();
+  else if (over[4]){
+    if(field.size() < 5){
+      Tomato t = new Tomato();
+      field.add(t);
+      t.display();
     }
   }
-  if (over[5]){
-    int place = openSpace();
-    field[place]=new Wheat();
-    if(place < 4){
-      field[place].display();
+  else if (over[5]){
+    if(field.size() < 5){
+      Wheat w = new Wheat();
+      field.add(w);
+      w.display();
     }
   }
 }
