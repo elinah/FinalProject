@@ -12,7 +12,7 @@ Crop[] field = new Crop[4];
 boolean startExists = true;
 
 void setup(){
-  size(600,600);
+  size(640,600);
   background(255);
   fill(128,89,50);
   rect(145,200,300,200);
@@ -146,6 +146,28 @@ void draw(){
    text("Wheat",10,510);
    wasOver[5] = false;
  }
+ if (!startExists){
+   fill(255);
+   rect(500,0,140,600);
+   line(500,150,640,150);
+   line(500,300,640,300);
+   line(500,450,640,450);
+   textSize(20);
+   fill(0);
+   text("Field 1:",505,17);
+   text("Field 2:",505,167);
+   text("Field 3:",505,317);
+   text("Field 4:",505,467);
+   textSize(15);
+   for(int i = 0;i < 4;i++){
+     if (field[i] != null){
+       text(field[i].type,505,37+(i*150));
+       text("Water Level: " + field[i].getWater(),505,52+(i*150));
+       text("Height: " + field[i].height,505,67+(i*150));
+       text("Health: " + field[i].health,505,82+(i*150));
+     }
+   }
+ }
 }
 
 void update(int index, int x1, int x2, int y1, int y2){
@@ -175,7 +197,6 @@ void mousePressed(){
    rect(145, 450, 80, 60);
  }
  int f = freeField();
- System.out.println(f);
  if (f != -1 && !startExists){
    if (over[1]){
      Corn c = new Corn(fieldcor[f][0],fieldcor[f][1]);
