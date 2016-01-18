@@ -1,6 +1,6 @@
 class Wheat extends Crop{
-  Wheat(){
-    super();
+  Wheat(int x,int y){
+    super(x,y);
     type = "Wheat";
     health = 100;
   }
@@ -13,6 +13,6 @@ class Wheat extends Crop{
   
   void display(){
     fill(125);
-    rect(50,50,50,50);
+    rect(xcor,ycor,50,50);
   }
 }

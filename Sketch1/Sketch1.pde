@@ -5,6 +5,8 @@ color rectColor;
 color rectHighlight;
 //0 = start, 1 = corn, 2 = lettuce, 3 = potato, 4 = tomato, 5 = wheat
 boolean[] over = new boolean[6];
+boolean[] free = {true, true, true, true};
+int[][]fieldcor = {{220,250},{370,250},{220,350},{370,350}};
 boolean[] wasOver = {true, true, true, true, true, true};
 ArrayList<Crop> field = new ArrayList<Crop>();
 boolean startExists = true;
@@ -155,6 +157,17 @@ void update(int index, int x1, int x2, int y1, int y2){
   }
 }
 
+int[] freeField(){
+  int[]clear = {0,0};
+  for(int i = 0;i < 4;i++){
+    if(free[i]){
+      free[i] = false;
+      return fieldcor[i];
+    }
+  }
+  return clear;
+}
+
 void mousePressed(){
 //0 = start, 1 = corn, 2 = lettuce, 3 = potato, 4 = tomato, 5 = wheat
   if (over[0] && startExists){
@@ -165,35 +178,35 @@ void mousePressed(){
   }  
   if (over[1]){
     if(field.size() < 5){
-      Corn c = new Corn();
+      Corn c = new Corn(freeField()[0],freeField()[1]);
       field.add(c);
       c.display();
     }
   }
   else if (over[2]){
     if(field.size() < 5){
-      Lettuce l = new Lettuce();
+      Lettuce l = new Lettuce(freeField()[0],freeField()[1]);
       field.add(l);
       l.display();
     }
   }
   else if (over[3]){
     if(field.size() < 5){
-      Potato p = new Potato();
+      Potato p = new Potato(freeField()[0],freeField()[1]);
       field.add(p);
       p.display();
     }
   }
   else if (over[4]){
     if(field.size() < 5){
-      Tomato t = new Tomato();
+      Tomato t = new Tomato(freeField()[0],freeField()[1]);
       field.add(t);
       t.display();
     }
   }
   else if (over[5]){
     if(field.size() < 5){
-      Wheat w = new Wheat();
+      Wheat w = new Wheat(freeField()[0],freeField()[1]);
       field.add(w);
       w.display();
     }

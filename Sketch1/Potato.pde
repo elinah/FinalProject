@@ -1,6 +1,6 @@
 class Potato extends Crop{
-  Potato(){
-    super();
+  Potato(int x,int y){
+    super(x,y);
     type = "Potato";
     health = 100;
   }
@@ -13,6 +13,6 @@ class Potato extends Crop{
   
   void display(){
     fill(100);
-    rect(50,50,50,50);
+    rect(xcor,ycor,50,50);
   }
 }

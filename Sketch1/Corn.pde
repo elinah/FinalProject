@@ -1,6 +1,6 @@
 class Corn extends Crop{
-  Corn(){
-    super();
+  Corn(int x,int y){
+    super(x,y);
     type = "Corn";
     health = 100;
   }
@@ -13,6 +13,6 @@ class Corn extends Crop{
   
   void display(){
     fill(25);
-    rect(50,50,50,50);
+    rect(xcor,ycor,50,50);
   }
 }

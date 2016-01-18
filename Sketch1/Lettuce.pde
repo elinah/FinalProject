@@ -1,6 +1,6 @@
 class Lettuce extends Crop{
-  Lettuce(){
-    super();
+  Lettuce(int x,int y){
+    super(x,y);
     type = "Lettuce";
     health = 100;
   }
@@ -12,6 +12,6 @@ class Lettuce extends Crop{
   }
   void display(){
     fill(75);
-    rect(50,50,50,50);
+    rect(xcor,ycor,50,50);
   }
 }

@@ -1,10 +1,12 @@
 abstract class Crop{
-  int health,waterLevel,height;
+  int health,waterLevel,height,xcor,ycor;
   String type;
 
-  Crop(){
+  Crop(int x, int y){
     waterLevel = 100;
     height = 0;
+    xcor = x;
+    ycor = y;
   }
 
   void water(){
