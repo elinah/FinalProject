@@ -4,10 +4,10 @@ PShape wateringCan, weedRemover;
 color rectColor;
 color rectHighlight;
 //0 = start, 1 = corn, 2 = lettuce, 3 = potato, 4 = tomato, 5 = wheat
-boolean[] over = new boolean[6];
+boolean[] over = new boolean[8];
 boolean[] free = {true, true, true, true};
 int[][] fieldcor = {{220,250},{370,250},{220,350},{370,350}};
-boolean[] wasOver = {true, true, true, true, true, true};
+boolean[] wasOver = {true, true, true, true, true, true, true, true};
 Crop[] field = new Crop[4];
 boolean startExists = true;
 
@@ -19,15 +19,11 @@ void setup(){
   line(295,200,295,400);
   line(145,300,445,300);
   img1 = loadImage("watering-can.png");
-  wateringCan = createShape(RECT,300,50,200,100);
-  wateringCan.setTexture(img1);
+  image(img1,300,50,200,100);
   img2 = loadImage("weed-remover.png");
-  weedRemover = createShape(RECT,150,50,100,100);
-  weedRemover.setTexture(img2);
+  image(img2,150,50,100,100);
   rectColor = color(255);
   rectHighlight = color(204);
-  shape(wateringCan);
-  shape(weedRemover);
 }
 
 void draw(){
@@ -145,6 +141,26 @@ void draw(){
    fill(0);
    text("Wheat",10,510);
    wasOver[5] = false;
+ }
+ update(6, 300, 500, 50, 150);
+ if (!wasOver[6] && over[6] && !startExists){
+   tint(180);
+   image(img1,300,50,200,100);
+   wasOver[6] = true;
+ } else if (wasOver[6] && !over[6] && !startExists){
+   tint(255);
+   image(img1,300,50,200,100);
+   wasOver[6] = false;
+ }
+ update(7, 150, 250, 50, 150);
+ if (!wasOver[7] && over[7] && !startExists){
+   tint(180);
+   image(img2,150,50,100,100);
+   wasOver[7] = true;
+ } else if (wasOver[7] && !over[7] && !startExists){
+   tint(255);
+   image(img2,150,50,100,100);
+   wasOver[7] = false;
  }
  if (!startExists){
    fill(255);
