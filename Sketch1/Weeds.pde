@@ -1,12 +1,18 @@
 public class Weeds{
-  int health;
+  int health,xcor,ycor;
 
-  Weeds(){
-    health=1;
+  Weeds(int x,int y){
+    health = 1;
+    xcor = x;
+    ycor = y;
   }
 
   void die(){
-    health=0;
+    health = 0;
+  }
+  
+  int getHealth(){
+    return health;
   }
 
   void killCrop(Crop c){
@@ -15,6 +21,6 @@ public class Weeds{
   
   void display(){
     fill(150);
-    rect(50,50,50,50);
+    rect(xcor,ycor,50,50);
   }
 }

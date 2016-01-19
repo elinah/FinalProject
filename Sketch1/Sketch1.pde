@@ -1,5 +1,4 @@
 PImage img1, img2;
-PShape wateringCan, weedRemover;
 
 color rectColor;
 color rectHighlight;
@@ -9,6 +8,7 @@ boolean[] free = {true, true, true, true};
 int[][] fieldcor = {{220,250},{370,250},{220,350},{370,350}};
 boolean[] wasOver = {true, true, true, true, true, true, true, true};
 Crop[] field = new Crop[4];
+Weeds[] weed = new Weeds[4];
 boolean startExists = true;
 
 void setup(){
@@ -27,13 +27,22 @@ void setup(){
 }
 
 void draw(){
+  if (frameCount % 500 == 0 && freeWeed() != -1){
+    int space = freeWeed();
+    weed[space] = new Weeds(fieldcor[int(random(0,3))][0] - 50,fieldcor[int(random(0,3))][1]);
+    weed[space].display();
+  }
  for(int i = 0;i < 4;i++){
    if (field[i] != null && frameCount % 100 == 0){
      field[i].loseWater();
      field[i].grow();
-     System.out.println(field[i]);
    }
- }
+   if (weed[i] != null){
+     if (weed[i].getHealth() == 0){
+       weed[i] = null;
+       }
+     }
+   }
  update(0, 145, 215, 450, 500);
  if (!wasOver[0] && over[0] && startExists){
    stroke(0);
@@ -198,6 +207,15 @@ void update(int index, int x1, int x2, int y1, int y2){
 int freeField(){
  for(int i = 0;i < 4;i++){
    if(field[i] == null){
+     return i;
+   }
+ }
+ return -1;
+}
+
+int freeWeed(){
+ for(int i = 0;i < 4;i++){
+   if(weed[i] == null){
      return i;
    }
  }
