@@ -10,9 +10,4 @@ class Wheat extends Crop{
     addHeight(4);
     }
   }
-  
-  void display(){
-    fill(125);
-    rect(xcor,ycor,50,50);
-  }
 }

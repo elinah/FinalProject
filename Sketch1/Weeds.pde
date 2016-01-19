@@ -2,9 +2,9 @@ public class Weeds{
   int health,xcor,ycor;
 
   Weeds(int x,int y){
-    health = 1;
-    xcor = x;
-    ycor = y;
+     health = 1;
+     xcor = x;
+     ycor = y;
   }
 
   void die(){
@@ -12,8 +12,8 @@ public class Weeds{
   }
   
   int getHealth(){
-    return health;
-  }
+     return health;
+    }
 
   void killCrop(Crop c){
     c.loseHealth();

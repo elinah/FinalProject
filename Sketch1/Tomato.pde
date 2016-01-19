@@ -10,9 +10,4 @@ class Tomato extends Crop{
       addHeight(5);
     }
   }
-  
-  void display(){
-    fill(50);
-    rect(xcor,ycor,50,50);
-  }
 }

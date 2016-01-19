@@ -10,9 +10,4 @@ class Corn extends Crop{
       addHeight(3);
     }
   }
-  
-  void display(){
-    fill(25);
-    rect(xcor,ycor,50,50);
-  }
 }

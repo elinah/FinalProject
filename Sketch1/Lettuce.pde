@@ -10,8 +10,4 @@ class Lettuce extends Crop{
     addHeight(3);
     }
   }
-  void display(){
-    fill(75);
-    rect(xcor,ycor,50,50);
-  }
 }

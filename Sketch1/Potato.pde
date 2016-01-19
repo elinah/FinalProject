@@ -10,9 +10,4 @@ class Potato extends Crop{
     addHeight(5);
     }
   }
-  
-  void display(){
-    fill(100);
-    rect(xcor,ycor,50,50);
-  }
 }

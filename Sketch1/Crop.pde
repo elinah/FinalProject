@@ -34,7 +34,10 @@ abstract class Crop{
   void addHeight(int amount){
     height += amount;
   }
+  
+  void display(PImage p){
+    image(p, xcor, ycor, 50, 50);
+  }
 
   abstract void grow();
-  abstract void display();
 }
