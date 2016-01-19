@@ -19,8 +19,8 @@ public class Weeds{
     c.loseHealth();
   }
   
-  void display(){
+  void display(PImage p){
     fill(150);
-    rect(xcor,ycor,50,50);
+    image(p,xcor,ycor,50,50);
   }
 }

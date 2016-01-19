@@ -1,4 +1,4 @@
-PImage img1, img2, corn, lettuce, potato, tomato, wheat;
+PImage img1, img2, corn, lettuce, potato, tomato, wheat, weeds;
 
 color rectColor;
 color rectHighlight;
@@ -31,6 +31,7 @@ void setup(){
   potato = loadImage("potato.png");
   tomato = loadImage("tomato.jpg");
   wheat = loadImage("wheat.png");
+  weeds = loadImage("weeds.png");
   rectColor = color(255);
   rectHighlight = color(204);
 }
@@ -39,7 +40,7 @@ void draw(){
      int i = int(random(0,3));
      if (weed[i] == null){
        weed[i] = new Weeds(fieldcor[i][0] - 50, fieldcor[i][1]);
-       weed[i].display();
+       weed[i].display(weeds);
      }
    }
  for(int i = 0;i < 4;i++){
@@ -193,7 +194,7 @@ void draw(){
          field[0].display(pictures[0]);
        }
        if (weed[0] != null){
-         weed[0].display();
+         weed[0].display(weeds);
        }
        wasOver[8] = true;
      } else if (wasOver[8] && !over[8]){
@@ -204,7 +205,7 @@ void draw(){
          field[0].display(pictures[0]);
        }
        if (weed[0] != null){
-         weed[0].display();
+         weed[0].display(weeds);
        }
        wasOver[8] = false;
      }
@@ -217,7 +218,7 @@ void draw(){
          field[1].display(pictures[1]);
        }
        if (weed[1] != null){
-         weed[1].display();
+         weed[1].display(weeds);
        }
        wasOver[9] = true;
      } else if (wasOver[9] && !over[9]){
@@ -228,7 +229,7 @@ void draw(){
          field[1].display(pictures[1]);
        }
        if (weed[1] != null){
-         weed[1].display();
+         weed[1].display(weeds);
        }
        wasOver[9] = false;
      }
@@ -241,7 +242,7 @@ void draw(){
          field[2].display(pictures[2]);
        }
        if (weed[2] != null){
-         weed[2].display();
+         weed[2].display(weeds);
        }
        wasOver[10] = true;
      } else if (wasOver[10] && !over[10]){
@@ -252,7 +253,7 @@ void draw(){
          field[2].display(pictures[2]);
        }
        if (weed[2] != null){
-         weed[2].display();
+         weed[2].display(weeds);
        }
        wasOver[10] = false;
      }
@@ -265,7 +266,7 @@ void draw(){
          field[3].display(pictures[3]);
        }
        if (weed[3] != null){
-         weed[3].display();
+         weed[3].display(weeds);
        }
        wasOver[11] = true;
      } else if (wasOver[11] && !over[11]){
@@ -276,7 +277,7 @@ void draw(){
          field[3].display(pictures[3]);
        }
        if (weed[3] != null){
-         weed[3].display();
+         weed[3].display(weeds);
        }
        wasOver[11] = false;
      }
