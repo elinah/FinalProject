@@ -1,4 +1,4 @@
-PImage img1, img2, corn, lettuce, potato, tomato, wheat, weeds;
+PImage img1, img2, corn, lettuce, potato, tomato, wheat, weeds, stage1, stage2;
 
 color rectColor;
 color rectHighlight;
@@ -10,9 +10,7 @@ boolean[] wasOver = {true, true, true, true, true, true, true, true, true, true,
 Crop[] field = new Crop[4];
 Weeds[] weed = new Weeds[4];
 PImage[] pictures = new PImage[4];
-boolean startExists = true;
-boolean wateringCanPressed = false;
-boolean weedRemoverPressed = false;
+boolean startExists = true, wateringCanPressed = false, weedRemoverPressed = false;
 
 void setup(){
   size(640,600);
@@ -26,6 +24,8 @@ void setup(){
   image(img1,300,50,200,100);
   img2 = loadImage("weed-remover.png");
   image(img2,150,50,100,100);
+  stage1 = loadImage("stage1.png");
+  stage2 = loadImage("stage2.png");
   corn = loadImage("corn.png");
   lettuce = loadImage("lettuce.jpg");
   potato = loadImage("potato.png");
@@ -47,10 +47,14 @@ void draw(){
    if (field[i] != null && frameCount % 100 == 0){
      field[i].loseWater();
      field[i].grow();
-     if (weed[i] != null){
+     if (weed[i] != null && field[i].health > 0){
        weed[i].killCrop(field[i]);
      }
      System.out.println(field[i]);
+   }
+   if (field[i] != null && field[i].health == 0){
+     field[i].die();
+     field[i] = null;
    }
  }
  update(0, 145, 215, 450, 500);
@@ -170,7 +174,7 @@ void draw(){
      image(img1,300,50,200,100);
      wasOver[6] = true;
    } else if (wasOver[6] && !weedRemoverPressed && !over[6] && !wateringCanPressed){
-     tint(255);
+     noTint();
      image(img1,300,50,200,100);
      wasOver[6] = false;
    }
@@ -180,7 +184,7 @@ void draw(){
      image(img2,150,50,100,100);
      wasOver[7] = true;
    } else if (wasOver[7] && !wateringCanPressed && !over[7] && !weedRemoverPressed){
-     tint(255);
+     noTint();
      image(img2,150,50,100,100);
      wasOver[7] = false;
    }
@@ -282,6 +286,7 @@ void draw(){
        wasOver[11] = false;
      }
    }
+   stroke(0);
    fill(255);
    rect(500,0,140,600);
    line(500,150,640,150);
@@ -373,32 +378,32 @@ void mousePressed(){
      if (over[1]){
        Corn c = new Corn(fieldcor[f][0],fieldcor[f][1]);
        field[f] = c;
-       c.display(corn);
-       pictures[f] = corn;
+       c.display(stage1);
+       pictures[f] = stage1;
      }
      else if (over[2]){
        Lettuce l = new Lettuce(fieldcor[f][0],fieldcor[f][1]);
        field[f] = l;
-       l.display(lettuce);
-       pictures[f] = lettuce;
+       l.display(stage1);
+       pictures[f] = stage1;
      }
      else if (over[3]){
        Potato p = new Potato(fieldcor[f][0],fieldcor[f][1]);
        field[f] = p;
-       p.display(potato);
-       pictures[f] = potato;
+       p.display(stage1);
+       pictures[f] = stage1;
      }
      else if (over[4]){
        Tomato t = new Tomato(fieldcor[f][0],fieldcor[f][1]);
        field[f] = t;
-       t.display(tomato);
-       pictures[f] = tomato;
+       t.display(stage1);
+       pictures[f] = stage1;
      }
      else if (over[5]){
        Wheat w = new Wheat(fieldcor[f][0],fieldcor[f][1]);
        field[f] = w;
-       w.display(wheat);
-       pictures[f] = wheat;
+       w.display(stage1);
+       pictures[f] = stage1;
      }
    }
  }

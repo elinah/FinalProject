@@ -22,7 +22,7 @@ abstract class Crop{
   }
 
   void loseHealth(){
-    health -= 1;
+    health -= 2;
   }
   
   void loseWater(){
@@ -36,8 +36,15 @@ abstract class Crop{
   }
   
   void display(PImage p){
+    noTint();
     image(p, xcor, ycor, 50, 50);
   }
-
+  
+  void die(){
+    noStroke();
+    fill(128,89,50);
+    rect(xcor, ycor, 50, 50);
+  }
+  
   abstract void grow();
 }
