@@ -56,6 +56,13 @@ void draw(){
      field[i].die();
      field[i] = null;
    }
+   if (field[i] != null && field[i].height >= 34 && field[i].height <= 66){
+     field[i].die();
+     field[i].display(stage2);
+   } else if (field[i] != null && field[i].height >= 67){
+     field[i].die();
+     field[i].display(pictures[i]);
+   }
  }
  update(0, 145, 215, 450, 500);
  if (!wasOver[0] && over[0] && startExists){
@@ -195,7 +202,13 @@ void draw(){
        fill(164,116,68);
        rect(145,200,150,100);
        if (field[0] != null){
-         field[0].display(pictures[0]);
+         if (field[0].height <= 33){
+           field[0].display(stage1);
+         } else if (field[0].height <= 66){
+           field[0].display(stage2);
+         } else {
+           field[0].display(pictures[0]);
+         }
        }
        if (weed[0] != null){
          weed[0].display(weeds);
@@ -206,7 +219,13 @@ void draw(){
        fill(128,89,50);
        rect(145,200,150,100);
        if (field[0] != null){
-         field[0].display(pictures[0]);
+         if (field[0].height <= 33){
+           field[0].display(stage1);
+         } else if (field[0].height <= 66){
+           field[0].display(stage2);
+         } else {
+           field[0].display(pictures[0]);
+         }
        }
        if (weed[0] != null){
          weed[0].display(weeds);
@@ -219,7 +238,13 @@ void draw(){
        fill(164,116,68);
        rect(295,200,150,100);
        if (field[1] != null){
-         field[1].display(pictures[1]);
+         if (field[1].height <= 33){
+           field[1].display(stage1);
+         } else if (field[1].height <= 66){
+           field[1].display(stage2);
+         } else {
+           field[1].display(pictures[1]);
+         }
        }
        if (weed[1] != null){
          weed[1].display(weeds);
@@ -230,7 +255,13 @@ void draw(){
        fill(128,89,50);
        rect(295,200,150,100);
        if (field[1] != null){
-         field[1].display(pictures[1]);
+         if (field[1].height <= 33){
+           field[1].display(stage1);
+         } else if (field[1].height <= 66){
+           field[1].display(stage2);
+         } else {
+           field[1].display(pictures[1]);
+         }
        }
        if (weed[1] != null){
          weed[1].display(weeds);
@@ -243,7 +274,13 @@ void draw(){
        fill(164,116,68);
        rect(145,300,150,100);
        if (field[2] != null){
-         field[2].display(pictures[2]);
+         if (field[2].height <= 33){
+           field[2].display(stage1);
+         } else if (field[2].height <= 66){
+           field[2].display(stage2);
+         } else {
+           field[2].display(pictures[2]);
+         }
        }
        if (weed[2] != null){
          weed[2].display(weeds);
@@ -254,7 +291,13 @@ void draw(){
        fill(128,89,50);
        rect(145,300,150,100);
        if (field[2] != null){
-         field[2].display(pictures[2]);
+         if (field[2].height <= 33){
+           field[2].display(stage1);
+         } else if (field[2].height <= 66){
+           field[2].display(stage2);
+         } else {
+           field[2].display(pictures[2]);
+         }
        }
        if (weed[2] != null){
          weed[2].display(weeds);
@@ -267,7 +310,13 @@ void draw(){
        fill(164,116,68);
        rect(295,300,150,100);
        if (field[3] != null){
-         field[3].display(pictures[3]);
+         if (field[3].height <= 33){
+           field[3].display(stage1);
+         } else if (field[3].height <= 66){
+           field[3].display(stage2);
+         } else {
+           field[3].display(pictures[3]);
+         }
        }
        if (weed[3] != null){
          weed[3].display(weeds);
@@ -278,7 +327,13 @@ void draw(){
        fill(128,89,50);
        rect(295,300,150,100);
        if (field[3] != null){
-         field[3].display(pictures[3]);
+         if (field[3].height <= 33){
+           field[3].display(stage1);
+         } else if (field[3].height <= 66){
+           field[3].display(stage2);
+         } else {
+           field[3].display(pictures[3]);
+         }
        }
        if (weed[3] != null){
          weed[3].display(weeds);
@@ -379,31 +434,31 @@ void mousePressed(){
        Corn c = new Corn(fieldcor[f][0],fieldcor[f][1]);
        field[f] = c;
        c.display(stage1);
-       pictures[f] = stage1;
+       pictures[f] = corn;
      }
      else if (over[2]){
        Lettuce l = new Lettuce(fieldcor[f][0],fieldcor[f][1]);
        field[f] = l;
        l.display(stage1);
-       pictures[f] = stage1;
+       pictures[f] = lettuce;
      }
      else if (over[3]){
        Potato p = new Potato(fieldcor[f][0],fieldcor[f][1]);
        field[f] = p;
        p.display(stage1);
-       pictures[f] = stage1;
+       pictures[f] = potato;
      }
      else if (over[4]){
        Tomato t = new Tomato(fieldcor[f][0],fieldcor[f][1]);
        field[f] = t;
        t.display(stage1);
-       pictures[f] = stage1;
+       pictures[f] = tomato;
      }
      else if (over[5]){
        Wheat w = new Wheat(fieldcor[f][0],fieldcor[f][1]);
        field[f] = w;
        w.display(stage1);
-       pictures[f] = stage1;
+       pictures[f] = wheat;
      }
    }
  }
