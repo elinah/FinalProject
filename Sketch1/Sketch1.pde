@@ -6,6 +6,7 @@ color rectHighlight;
 boolean[] over = new boolean[12];
 boolean[] free = {true, true, true, true};
 int[][] fieldcor = {{220,250},{370,250},{220,350},{370,350}};
+int[][] fieldarea = {{145,200},{295,200},{145,300},{295,300}};
 boolean[] wasOver = {true, true, true, true, true, true, true, true, true, true, true, true};
 Crop[] field = new Crop[4];
 Weeds[] weed = new Weeds[4];
@@ -27,9 +28,9 @@ void setup(){
   stage1 = loadImage("stage1.png");
   stage2 = loadImage("stage2.png");
   corn = loadImage("corn.png");
-  lettuce = loadImage("lettuce.jpg");
+  lettuce = loadImage("lettuce.png");
   potato = loadImage("potato.png");
-  tomato = loadImage("tomato.jpg");
+  tomato = loadImage("tomato.png");
   wheat = loadImage("wheat.png");
   weeds = loadImage("weeds.png");
   rectColor = color(255);
@@ -55,13 +56,18 @@ void draw(){
    if (field[i] != null && field[i].health == 0){
      field[i].die();
      field[i] = null;
-   }
-   if (field[i] != null && field[i].height >= 34 && field[i].height <= 66){
-     field[i].die();
+   } else if (field[i] != null && !field[i].updatePicture && field[i].height >= 34 && field[i].height <= 66){
+     stroke(0);
+     fill(128,89,50);
+     rect(fieldarea[i][0],fieldarea[i][1],150,100);
      field[i].display(stage2);
-   } else if (field[i] != null && field[i].height >= 67){
-     field[i].die();
+     field[i].updatePicture = true;
+   } else if (field[i] != null && field[i].updatePicture && field[i].height >= 67){
+     stroke(0);
+     fill(128,89,50);
+     rect(fieldarea[i][0],fieldarea[i][1],150,100);
      field[i].display(pictures[i]);
+     field[i].updatePicture = false;
    }
  }
  update(0, 145, 215, 450, 500);

@@ -1,6 +1,7 @@
 abstract class Crop{
   int health,waterLevel,height,xcor,ycor;
   String type;
+  boolean updatePicture = false;
 
   Crop(int x, int y){
     waterLevel = 100;
