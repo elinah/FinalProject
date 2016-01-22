@@ -20,6 +20,7 @@ public class Weeds{
   }
   
   void display(PImage p){
+    noTint();
     fill(150);
     image(p,xcor,ycor,50,50);
   }

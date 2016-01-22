@@ -2,16 +2,17 @@ PImage img1, img2, corn, lettuce, potato, tomato, wheat, weeds, stage1, stage2;
 
 color rectColor;
 color rectHighlight;
-//0 = start, 1 = corn, 2 = lettuce, 3 = potato, 4 = tomato, 5 = wheat
-boolean[] over = new boolean[12];
+//0 = start, 1 = corn, 2 = lettuce, 3 = potato, 4 = tomato, 5 = wheat, 6 = watering can,
+//7 = weed remover, 8-11 = field 1-4 (respectively), 12 = harvest
+boolean[] over = new boolean[13];
 boolean[] free = {true, true, true, true};
 int[][] fieldcor = {{220,250},{370,250},{220,350},{370,350}};
 int[][] fieldarea = {{145,200},{295,200},{145,300},{295,300}};
-boolean[] wasOver = {true, true, true, true, true, true, true, true, true, true, true, true};
+boolean[] wasOver = {true, true, true, true, true, true, true, true, true, true, true, true, true};
 Crop[] field = new Crop[4];
 Weeds[] weed = new Weeds[4];
 PImage[] pictures = new PImage[4];
-boolean startExists = true, wateringCanPressed = false, weedRemoverPressed = false;
+boolean startExists = true, wateringCanPressed = false, weedRemoverPressed = false, harvestPressed = false;
 
 void setup(){
   size(640,600);
@@ -68,6 +69,8 @@ void draw(){
      rect(fieldarea[i][0],fieldarea[i][1],150,100);
      field[i].display(pictures[i]);
      field[i].updatePicture = false;
+   } else if (field[i] != null && field[i].height >= 100){
+     field[i].harvestable = true;
    }
  }
  update(0, 145, 215, 450, 500);
@@ -88,7 +91,7 @@ void draw(){
    text("Start", 145, 480);
    wasOver[0] = false;
  }
- if (!startExists && !wateringCanPressed && !weedRemoverPressed){
+ if (!startExists && !wateringCanPressed && !weedRemoverPressed && !harvestPressed){
    update(1, 0, 140, 0, 120);
    if (!wasOver[1] && over[1]){
      stroke(0);
@@ -182,26 +185,44 @@ void draw(){
  }
  if (!startExists){
    update(6, 300, 500, 50, 150);
-   if (!wasOver[6] && !weedRemoverPressed && (over[6] || wateringCanPressed)){
+   if (!wasOver[6] && !weedRemoverPressed && !harvestPressed && (over[6] || wateringCanPressed)){
      tint(180);
      image(img1,300,50,200,100);
      wasOver[6] = true;
-   } else if (wasOver[6] && !weedRemoverPressed && !over[6] && !wateringCanPressed){
+   } else if (wasOver[6] && !weedRemoverPressed && !harvestPressed && !over[6] && !wateringCanPressed){
      noTint();
      image(img1,300,50,200,100);
      wasOver[6] = false;
    }
    update(7, 150, 250, 50, 150);
-   if (!wasOver[7] && !wateringCanPressed && (over[7] || weedRemoverPressed)){
+   if (!wasOver[7] && !wateringCanPressed && !harvestPressed && (over[7] || weedRemoverPressed)){
      tint(180);
      image(img2,150,50,100,100);
      wasOver[7] = true;
-   } else if (wasOver[7] && !wateringCanPressed && !over[7] && !weedRemoverPressed){
+   } else if (wasOver[7] && !wateringCanPressed && !harvestPressed && !over[7] && !weedRemoverPressed){
      noTint();
      image(img2,150,50,100,100);
      wasOver[7] = false;
+   } 
+   update(12, 145, 450, 120, 50);
+   if (!wasOver[12] && !wateringCanPressed && !weedRemoverPressed && (over[12] || harvestPressed)){
+     stroke(0);
+     fill(rectHighlight);
+     rect(145, 450, 120, 50);
+     textSize(30);
+     fill(0);
+     text("Harvest!", 145, 480);
+     wasOver[12] = true;
+   } else if (wasOver[12] && !wateringCanPressed && !weedRemoverPressed && !over[12] && !harvestPressed){
+     stroke(0);
+     fill(rectColor);
+     rect(145, 450, 120, 50);
+     textSize(30);
+     fill(0);
+     text("Harvest!", 145, 480);
+     wasOver[12] = false;
    }
-   if (wateringCanPressed || weedRemoverPressed){
+   if (wateringCanPressed || weedRemoverPressed || harvestPressed){
      update(8, 145, 295, 200, 300);
      if (!wasOver[8] && over[8]){
        stroke(0);
@@ -399,16 +420,17 @@ int freeWeed(){
  }
 
 void mousePressed(){
-//0 = start, 1 = corn, 2 = lettuce, 3 = potato, 4 = tomato, 5 = wheat
  if (over[0] && startExists){
    startExists = false;
    fill(255);
    noStroke();
    rect(145, 450, 80, 60);
- } else if (over[6] && !startExists && !weedRemoverPressed){
+ } else if (over[6] && !startExists && !weedRemoverPressed && !harvestPressed){
    wateringCanPressed = !wateringCanPressed;
- } else if (over[7] && !startExists && !wateringCanPressed){
+ } else if (over[7] && !startExists && !wateringCanPressed && !harvestPressed){
    weedRemoverPressed = !weedRemoverPressed;
+ } else if (over[12] && !startExists && !wateringCanPressed && !weedRemoverPressed){
+   harvestPressed = !harvestPressed;
  } else if (!startExists && wateringCanPressed){
    if (over[8] && field[0] != null){
      field[0].waterLevel = 100;
