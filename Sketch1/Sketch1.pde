@@ -13,6 +13,7 @@ Crop[] field = new Crop[4];
 Weeds[] weed = new Weeds[4];
 PImage[] pictures = new PImage[4];
 boolean startExists = true, wateringCanPressed = false, weedRemoverPressed = false, harvestPressed = false;
+int money = 0;
 
 void setup(){
   size(640,600);
@@ -55,7 +56,7 @@ void draw(){
      System.out.println(field[i]);
    }
    if (field[i] != null && field[i].health == 0){
-     field[i].die();
+     field[i].die(false);
      field[i] = null;
    } else if (field[i] != null && !field[i].updatePicture && field[i].height >= 34 && field[i].height <= 66){
      stroke(0);
@@ -204,22 +205,22 @@ void draw(){
      image(img2,150,50,100,100);
      wasOver[7] = false;
    } 
-   update(12, 145, 450, 120, 50);
+   update(12, 250, 370, 450, 500);
    if (!wasOver[12] && !wateringCanPressed && !weedRemoverPressed && (over[12] || harvestPressed)){
      stroke(0);
      fill(rectHighlight);
-     rect(145, 450, 120, 50);
+     rect(250, 450, 120, 50);
      textSize(30);
      fill(0);
-     text("Harvest!", 145, 480);
+     text("Harvest!", 250, 480);
      wasOver[12] = true;
    } else if (wasOver[12] && !wateringCanPressed && !weedRemoverPressed && !over[12] && !harvestPressed){
      stroke(0);
      fill(rectColor);
-     rect(145, 450, 120, 50);
+     rect(250, 450, 120, 50);
      textSize(30);
      fill(0);
-     text("Harvest!", 145, 480);
+     text("Harvest!", 250, 480);
      wasOver[12] = false;
    }
    if (wateringCanPressed || weedRemoverPressed || harvestPressed){
@@ -374,8 +375,11 @@ void draw(){
    line(500,150,640,150);
    line(500,300,640,300);
    line(500,450,640,450);
+   noStroke();
+   rect(145,550,350,50);
    textSize(20);
    fill(0);
+   text("Money Earned: "+money,145,580);
    text("Field 1:",505,17);
    text("Field 2:",505,167);
    text("Field 3:",505,317);
@@ -454,6 +458,24 @@ void mousePressed(){
    } else if (over[11] && weed[3] != null){
      weed[3] = null;
      wasOver[11] = !wasOver[11];
+   }
+ } else if (!startExists && harvestPressed){
+   if (over[8] && field[0] != null && field[0].harvestable){
+     field[0].die(true);
+     field[0] = null;
+     money += 5;
+   } else if (over[9] && field[1] != null && field[1].harvestable){
+     field[1].die(true);
+     field[1] = null;
+     money += 5;
+   } else if (over[10] && field[2] != null && field[2].harvestable){
+     field[2].die(true);
+     field[2] = null;
+     money += 5;
+   } else if (over[11] && field[3] != null && field[3].harvestable){
+     field[3].die(true);
+     field[3] = null;
+     money += 5;
    }
  } else if (!startExists){
    int f = freeField();

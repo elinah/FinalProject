@@ -41,9 +41,13 @@ abstract class Crop{
     image(p, xcor, ycor, 50, 50);
   }
   
-  void die(){
+  void die(boolean b){
     noStroke();
-    fill(128,89,50);
+    if (b){
+      fill(164,116,68);
+    } else {
+      fill(128,89,50);
+    }
     rect(xcor, ycor, 50, 50);
   }
   
