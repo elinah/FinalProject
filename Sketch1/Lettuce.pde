@@ -13,11 +13,19 @@ class Lettuce extends Crop{
     }
   }
   
-  void addMoney(){
-    if (season == 3){
-      money += 10;
+  void addMoney(boolean b, int i){
+    if (b){
+      if (season == 3){
+        money += (10 - (0.25 * i));
+      } else {
+        money += (2 - (0.25 * i));
+      }
     } else {
-      money += 2;
+      if (season == 3){
+        money += 10;
+      } else {
+        money += 2;
+      }
     }
   }
 }

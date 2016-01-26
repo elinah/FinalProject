@@ -13,7 +13,11 @@ class Wheat extends Crop{
     }
   }
   
-  void addMoney(){
-    money += 5;
+  void addMoney(boolean b, int i){
+    if (b){
+      money += (5 - (0.25 * i));
+    } else {
+      money += 5;
+    }
   }
 }

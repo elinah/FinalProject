@@ -56,6 +56,12 @@ void draw(){
      if (weed[i] != null && field[i].health > 0){
        weed[i].killCrop(field[i]);
      }
+     if (field[i].waterTooLow){
+       field[i].health -= 1;
+     }
+     if (field[i].heightTooHigh){
+       field[i].valueDecrease += 1;
+     }
    }
    if (field[i] != null && field[i].health == 0){
      field[i].die(false);
@@ -74,6 +80,12 @@ void draw(){
      field[i].updatePicture = false;
    } else if (field[i] != null && field[i].height >= 100){
      field[i].harvestable = true;
+   } 
+   if (field[i] != null && field[i].getWater() == 0){
+     field[i].waterTooLow = true;
+   }
+   if (field[i] != null && field[i].height >= 100){
+     field[i].heightTooHigh = true;
    }
  }
  update(0, 145, 215, 450, 500);
@@ -468,12 +480,16 @@ void mousePressed(){
    harvestPressed = !harvestPressed;
  } else if (!startExists && wateringCanPressed){
    if (over[8] && field[0] != null){
+     field[0].waterTooLow = false;
      field[0].waterLevel = 100;
    } else if (over[9] && field[1] != null){
+     field[1].waterTooLow = false;
      field[1].waterLevel = 100;
    } else if (over[10] && field[2] != null){
+     field[2].waterTooLow = false;
      field[2].waterLevel = 100;
    } else if (over[11] && field[3] != null){
+     field[3].waterTooLow = false;
      field[3].waterLevel = 100;
    }
  } else if (!startExists && weedRemoverPressed){
@@ -492,19 +508,19 @@ void mousePressed(){
    }
  } else if (!startExists && harvestPressed){
    if (over[8] && field[0] != null && field[0].harvestable){
-     field[0].addMoney();
+     field[0].addMoney(field[0].heightTooHigh, field[0].valueDecrease);
      field[0].die(true);
      field[0] = null;
    } else if (over[9] && field[1] != null && field[1].harvestable){
-     field[1].addMoney();
+     field[1].addMoney(field[1].heightTooHigh, field[1].valueDecrease);
      field[1].die(true);
      field[1] = null;
    } else if (over[10] && field[2] != null && field[2].harvestable){
-     field[2].addMoney();
+     field[2].addMoney(field[2].heightTooHigh, field[2].valueDecrease);
      field[2].die(true);
      field[2] = null;
    } else if (over[11] && field[3] != null && field[3].harvestable){
-     field[3].addMoney();
+     field[3].addMoney(field[3].heightTooHigh, field[3].valueDecrease);
      field[3].die(true);
      field[3] = null;
    }

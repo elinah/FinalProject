@@ -12,11 +12,19 @@ class Tomato extends Crop{
       addHeight(5);
     }
   }
-  void addMoney(){
-    if (season == 0){
-      money += 10;
+  void addMoney(boolean b, int i){
+    if (b){
+      if (season == 0){
+        money += (10 - (0.25 * i));
+      } else {
+        money += (2 - (0.25 * i));
+      }
     } else {
-      money += 2;
+      if (season == 0){
+        money += 10;
+      } else {
+        money += 2;
+      }
     }
   }
 }

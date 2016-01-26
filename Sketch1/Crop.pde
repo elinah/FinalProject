@@ -1,13 +1,14 @@
 abstract class Crop{
-  int health,waterLevel,height,xcor,ycor;
+  int health,waterLevel,height,xcor,ycor,valueDecrease;
   String type;
-  boolean updatePicture = false, harvestable = false;
+  boolean updatePicture = false, harvestable = false, waterTooLow = false, heightTooHigh = false;
 
   Crop(int x, int y){
     waterLevel = 100;
     height = 0;
     xcor = x;
     ycor = y;
+    valueDecrease = 0;
   }
 
   void water(){
@@ -54,5 +55,5 @@ abstract class Crop{
   }
   
   abstract void grow();
-  abstract void addMoney();
+  abstract void addMoney(boolean b, int i);
 }
