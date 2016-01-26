@@ -18,4 +18,4 @@ Change log:
 
 01/24/16: Added money$$$, so now when you harvest, you earn money; fixed bug: harvest button now highlights properly. No new bugs! :)
 
-01/25/16: Added seasons, which affect the water loss and growth rates; added different money values for each crop depending on which season; fixed bug (during certain seasons the water would go below 0); added feature which checks if water level was too low for too long (takes health away if it was) or if the crop was harvestable for too long (makes it worth less if it was).
+01/25/16: Added seasons, which affect the water loss and growth rates; added different money values for each crop depending on which season; fixed bug (during certain seasons the water would go below 0); added feature which checks if water level was too low for too long (takes health away if it was) or if the crop was harvestable for too long (makes it worth less if it was); bug introduced: negative money; fixed bug: negative money; everything is done! :)
