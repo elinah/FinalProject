@@ -50,6 +50,11 @@ void draw(){
      }
    }
  for(int i = 0;i < 4;i++){
+   if (field[i] != null && frameCount % 300 == 0){
+     if (field[i].heightTooHigh){
+       field[i].valueDecrease += 1;
+     }
+   }
    if (field[i] != null && frameCount % 100 == 0){
      field[i].loseWater();
      field[i].grow();
@@ -58,9 +63,6 @@ void draw(){
      }
      if (field[i].waterTooLow){
        field[i].health -= 1;
-     }
-     if (field[i].heightTooHigh){
-       field[i].valueDecrease += 1;
      }
    }
    if (field[i] != null && field[i].health == 0){
@@ -410,11 +412,11 @@ void draw(){
    line(500,300,640,300);
    line(500,450,640,450);
    noStroke();
-   rect(145,550,350,50);
+   rect(145,510,350,80);
    textSize(20);
    fill(0);
-   text("Season: "+seasons[season],325,580);
-   text("Money Earned: "+money,145,580);
+   text("Season: "+seasons[season],145,550);
+   text("Money Earned: $"+money,145,580);
    text("Field 1:",505,17);
    text("Field 2:",505,167);
    text("Field 3:",505,317);
