@@ -27,8 +27,10 @@ abstract class Crop{
   }
   
   void loseWater(){
-    if (waterLevel > 0){
-    waterLevel -= 5;
+    if (waterLevel > 0 && season == 1 || season == 3){
+      waterLevel -= 10;
+    }else if (waterLevel >0){
+      waterLevel -=5;
     }
 }  
 

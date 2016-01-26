@@ -6,8 +6,10 @@ class Lettuce extends Crop{
   }
 
   void grow(){
-    if (waterLevel > 25 && height < 105){
-    addHeight(3);
+    if (waterLevel > 25 && height < 105 && season == 3){
+      addHeight(1);
+    }else if (waterLevel > 25 && height <105){
+      addHeight(3);
     }
   }
 }

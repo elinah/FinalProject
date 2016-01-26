@@ -1,9 +1,9 @@
 PImage img1, img2, corn, lettuce, potato, tomato, wheat, weeds, stage1, stage2;
 
-color rectColor;
-color rectHighlight;
+color rectColor, rectHighlight;
 //0 = start, 1 = corn, 2 = lettuce, 3 = potato, 4 = tomato, 5 = wheat, 6 = watering can,
 //7 = weed remover, 8-11 = field 1-4 (respectively), 12 = harvest
+String[] seasons = {"Spring","Summer","Fall","Winter"};
 boolean[] over = new boolean[13];
 boolean[] free = {true, true, true, true};
 int[][] fieldcor = {{220,250},{370,250},{220,350},{370,350}};
@@ -13,7 +13,7 @@ Crop[] field = new Crop[4];
 Weeds[] weed = new Weeds[4];
 PImage[] pictures = new PImage[4];
 boolean startExists = true, wateringCanPressed = false, weedRemoverPressed = false, harvestPressed = false;
-int money = 0;
+int money = 0, season = 0;
 
 void setup(){
   size(640,600);
@@ -39,6 +39,9 @@ void setup(){
   rectHighlight = color(204);
 }
 void draw(){
+  if (!startExists && frameCount % 1500 == 0){
+    changeSeason();
+  }
   if (!startExists && frameCount % 500 == 0){
      int i = int(random(0,3));
      if (weed[i] == null){
@@ -53,7 +56,6 @@ void draw(){
      if (weed[i] != null && field[i].health > 0){
        weed[i].killCrop(field[i]);
      }
-     System.out.println(field[i]);
    }
    if (field[i] != null && field[i].health == 0){
      field[i].die(false);
@@ -379,6 +381,7 @@ void draw(){
    rect(145,550,350,50);
    textSize(20);
    fill(0);
+   text("Season: "+seasons[season],325,580);
    text("Money Earned: "+money,145,580);
    text("Field 1:",505,17);
    text("Field 2:",505,167);
@@ -422,6 +425,14 @@ int freeWeed(){
   }
   return -1;
  }
+ 
+void changeSeason(){
+  if (season < 3){
+    season += 1;
+  }else{
+    season = 0;
+  }
+}
 
 void mousePressed(){
  if (over[0] && startExists){

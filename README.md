@@ -12,3 +12,4 @@ Change log:
 01/21/16: Changed lettuce and tomato pictures (so the background is clear); added stage 2 and final stage; bug introduced: changes to final stage when you hover over with watering can or weed remover; fixed bug: the above bug was fixed.
 01/22/16: Added harvest button; bug introduced: didn't highlight properly.
 01/24/16: Added money$$$, so now when you harvest, you earn money; fixed bug: harvest button now highlights properly. No new bugs! :)
+01/25/16: Added seasons, which affect the water loss and growth rates
