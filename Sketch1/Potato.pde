@@ -12,4 +12,12 @@ class Potato extends Crop{
       addHeight(5);
     }
   }
+  
+  void addMoney(){
+    if (season == 2){
+      money += 10;
+    } else {
+      money += 2;
+    }
+  }
 }

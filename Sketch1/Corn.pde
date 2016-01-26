@@ -12,4 +12,12 @@ class Corn extends Crop{
       addHeight(4);
     }
   }
+  
+  void addMoney(){
+    if (season == 1){
+      money += 10;
+    } else {
+      money += 2;
+    }
+  }
 }

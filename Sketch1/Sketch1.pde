@@ -103,6 +103,8 @@ void draw(){
      textSize(20);
      fill(0);
      text("Corn",10,30);
+     textSize(13);
+     text("Worth: \n$10 in summer\n$2 in other seasons",10,60);
      wasOver[1] = true;
    } else if (wasOver[1] && !over[1]){
      stroke(0);
@@ -111,6 +113,8 @@ void draw(){
      textSize(20);
      fill(0);
      text("Corn",10,30);
+     textSize(13);
+     text("Worth: \n$10 in summer\n$2 in other seasons",10,60);
      wasOver[1] = false;
    }
    update(2, 0, 140, 121, 240);
@@ -121,6 +125,8 @@ void draw(){
      textSize(20);
      fill(0);
      text("Lettuce",10,150);
+     textSize(13);
+     text("Worth: \n$10 in winter\n$2 in other seasons",10,180);
      wasOver[2] = true;
    } else if (wasOver[2] && !over[2]){
      stroke(0);
@@ -129,6 +135,8 @@ void draw(){
      textSize(20);
      fill(0);
      text("Lettuce",10,150);
+     textSize(13);
+     text("Worth: \n$10 in winter\n$2 in other seasons",10,180);
      wasOver[2] = false;
    }
    update(3, 0, 140, 241, 360);
@@ -139,6 +147,8 @@ void draw(){
      textSize(20);
      fill(0);
      text("Potato",10,270);
+     textSize(13);
+     text("Worth: \n$10 in fall\n$2 in other seasons",10,300);
      wasOver[3] = true;
    } else if (wasOver[3] && !over[3]){
      stroke(0);
@@ -147,6 +157,8 @@ void draw(){
      textSize(20);
      fill(0);
      text("Potato",10,270);
+     textSize(13);
+     text("Worth: \n$10 in fall\n$2 in other seasons",10,300);
      wasOver[3] = false;
    }
    update(4, 0, 140, 361, 480);
@@ -157,6 +169,8 @@ void draw(){
      textSize(20);
      fill(0);
      text("Tomato",10,390);
+     textSize(13);
+     text("Worth: \n$10 in spring\n$2 in other seasons",10,420);
      wasOver[4] = true;
    } else if (wasOver[4] && !over[4]){
      stroke(0);
@@ -165,6 +179,8 @@ void draw(){
      textSize(20);
      fill(0);
      text("Tomato",10,390);
+     textSize(13);
+     text("Worth: \n$10 in spring\n$2 in other seasons",10,420);
      wasOver[4] = false;
    }
    update(5, 0, 140, 481, 600);
@@ -175,6 +191,8 @@ void draw(){
      textSize(20);
      fill(0);
      text("Wheat",10,510);
+     textSize(13);
+     text("Worth: \n$5 all year long",10,540);
      wasOver[5] = true;
    } else if (wasOver[5] && !over[5]){
      stroke(0);
@@ -183,6 +201,8 @@ void draw(){
      textSize(20);
      fill(0);
      text("Wheat",10,510);
+     textSize(13);
+     text("Worth: \n$5 all year long",10,540);
      wasOver[5] = false;
    }
  }
@@ -472,21 +492,21 @@ void mousePressed(){
    }
  } else if (!startExists && harvestPressed){
    if (over[8] && field[0] != null && field[0].harvestable){
+     field[0].addMoney();
      field[0].die(true);
      field[0] = null;
-     money += 5;
    } else if (over[9] && field[1] != null && field[1].harvestable){
+     field[1].addMoney();
      field[1].die(true);
      field[1] = null;
-     money += 5;
    } else if (over[10] && field[2] != null && field[2].harvestable){
+     field[2].addMoney();
      field[2].die(true);
      field[2] = null;
-     money += 5;
    } else if (over[11] && field[3] != null && field[3].harvestable){
+     field[3].addMoney();
      field[3].die(true);
      field[3] = null;
-     money += 5;
    }
  } else if (!startExists){
    int f = freeField();

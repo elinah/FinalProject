@@ -12,4 +12,12 @@ class Lettuce extends Crop{
       addHeight(3);
     }
   }
+  
+  void addMoney(){
+    if (season == 3){
+      money += 10;
+    } else {
+      money += 2;
+    }
+  }
 }

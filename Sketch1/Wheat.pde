@@ -12,4 +12,8 @@ class Wheat extends Crop{
       addHeight(4);
     }
   }
+  
+  void addMoney(){
+    money += 5;
+  }
 }
