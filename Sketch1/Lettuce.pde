@@ -15,9 +15,9 @@ class Lettuce extends Crop{
   
   void addMoney(boolean b, int i){
     if (b){
-      if (season == 3){
+      if (season == 3  && (10 - (0.25 * i)) >= 0){
         money += (10 - (0.25 * i));
-      } else {
+      } else if ((2 - (0.25 * i)) >= 0) {
         money += (2 - (0.25 * i));
       }
     } else {

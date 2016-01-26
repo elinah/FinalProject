@@ -14,9 +14,9 @@ class Tomato extends Crop{
   }
   void addMoney(boolean b, int i){
     if (b){
-      if (season == 0){
+      if (season == 0 && (10 - (0.25 * i)) >= 0){
         money += (10 - (0.25 * i));
-      } else {
+      } else if ((2 - (0.25 * i)) >= 0){
         money += (2 - (0.25 * i));
       }
     } else {
